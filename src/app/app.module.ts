@@ -9,10 +9,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { environment } from 'src/environments/environment';
+import { LoginComponent } from './pages/user/login/login.component';
+import { RegisterComponent } from './pages/user/register/register.component';
+import { HomeComponent } from './pages/home/home.component';
+import { Page404Component } from './pages/page404/page404.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,
