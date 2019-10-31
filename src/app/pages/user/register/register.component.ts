@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/user/auth.service';
 import { Router } from '@angular/router';
 
 import swal from 'sweetalert2';
+import { UserService } from 'src/app/services/user/user.service';
+import { Usuario } from '../../../models/usuario';
 
 @Component({
   selector: 'app-register',
@@ -13,14 +14,21 @@ import swal from 'sweetalert2';
 export class RegisterComponent implements OnInit {
 
   public register: FormGroup;
+  private users: Usuario[];
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private userService: UserService,
     private router: Router
   ) { }
 
   ngOnInit() {
+
+    this.userService.users.subscribe( usuarios => {
+      this.users = usuarios;
+    }, err => {
+      console.log('error:', err);
+    });
 
     this.register = this.formBuilder.group({
       name: ['', Validators.required],
@@ -48,23 +56,26 @@ export class RegisterComponent implements OnInit {
         swal.fire('Registro Usuario', 'Los datos ingresado del Password, no son iguales', 'error');
         return;
       }
-      // this.authService.registerUser(
-      //   form.controls.name.value,
-      //   form.controls.lastname.value,
-      //   form.controls.email.value,
-      //   form .controls.password.value
-      // ).subscribe( data => {
-      //   const data_info: any = data;
 
-      //   if ( data_info.error != null ) {
-      //     swal('Registro Usuario', data_info.error, 'error');
-      //   }
+      const newUser: Usuario = {
+        nombre: form.controls.name.value,
+        apellido: form.controls.lastname.value,
+        email: form.controls.email.value,
+        telefono: form.controls.telefono.value,
+        direccion: form.controls.direccion.value,
+        password: form.controls.password.value,
+        tipo: form.controls.tipo.value
+      };
 
-      //   if ( data_info.status != null ) {
-      //     swal('Registro Usuario', 'registrado con exito', 'success');
-      //     this.router.navigate(['/user/login']);
-      //   }
-      // }, err => console.log(err));
+      if ( this.users !== undefined) {
+        if ( this.users.filter( user => user.email === newUser.email).length !== 0) {
+          swal.fire('Email ya registrado.', 'Existe otro usuario con el mismo email', 'error');
+          return;
+        }
+      }
+
+      this.userService.addUser(newUser);
+      this.router.navigate(['/user/login']);
     }
   }
 

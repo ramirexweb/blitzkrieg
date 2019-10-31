@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Usuario } from 'src/app/models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -7,11 +8,15 @@ export class AuthService {
 
   constructor() { }
 
+  setUser(user: Usuario): void {
+    const userString = JSON.stringify(user);
+    localStorage.setItem('currentUser', userString);
+  }
+
   getCurrentUser() {
-    // tslint:disable-next-line: variable-name
-    const user_String = localStorage.getItem('currentUser');
-    if ( user_String ) {
-      return JSON.parse(user_String);
+    const userString = localStorage.getItem('currentUser');
+    if ( userString ) {
+      return JSON.parse(userString);
     } else {
       return null;
     }

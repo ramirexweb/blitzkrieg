@@ -14,6 +14,7 @@ import { LoginComponent } from './pages/user/login/login.component';
 import { RegisterComponent } from './pages/user/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { Page404Component } from './pages/page404/page404.component';
+import { UserService } from './services/user/user.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { Page404Component } from './pages/page404/page404.component';
     MaterialModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
