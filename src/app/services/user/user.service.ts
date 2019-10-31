@@ -10,15 +10,18 @@ import { Usuario } from '../../models/usuario';
 export class UserService {
 
   usersCollection: AngularFirestoreCollection<Usuario>;
-  users: Observable<Usuario[]>;
   userDoc: AngularFirestoreDocument<Usuario>;
 
 
   constructor(
     private db: AngularFirestore
   ) {
+  }
+
+  public getUsers() {
+
     this.usersCollection = this.db.collection('users');
-    this.users = this.usersCollection.snapshotChanges().pipe(map(actions => {
+    return this.usersCollection.snapshotChanges().pipe(map(actions => {
       return actions.map( a => {
         const data = a.payload.doc.data() as Usuario;
         data.id = a.payload.doc.id;
@@ -27,8 +30,9 @@ export class UserService {
     }));
   }
 
-  public getUsers() {
-    return this.users;
+  public getUser(id: string ) {
+
+    return this.db.doc(`users/${id}`).valueChanges();
   }
 
   public addUser(user: Usuario) {

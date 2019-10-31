@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   setUser(user: Usuario): void {
     const userString = JSON.stringify(user);
@@ -20,5 +23,10 @@ export class AuthService {
     } else {
       return null;
     }
+  }
+
+  logoutUser() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/user/login']);
   }
 }

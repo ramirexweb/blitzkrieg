@@ -26,9 +26,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userService.users
-      .subscribe( dataUsuarios =>
-        this.users = dataUsuarios, err => console.log(err)
+    this.userService.getUsers()
+      .subscribe( dataUsuarios => {
+        this.users = dataUsuarios;
+      }, err => console.log('error:   ', err)
     );
 
     this.login = this.formBuilder.group({
@@ -46,7 +47,6 @@ export class LoginComponent implements OnInit {
     if ( !form.valid ) {
       swal.fire('Login Usuario', 'Formulario no valido', 'error');
     } else {
-      console.log(this.users);
       const usuarios = this.users.filter( user => user.email === form.controls.email.value);
 
       if ( usuarios.length === 0) {
@@ -60,42 +60,5 @@ export class LoginComponent implements OnInit {
         }
       }
     }
-
-    // if ( !form.valid ) {
-    //   swal('Login Usuario', 'Formulario no valido', 'error');
-    // } else {
-    //   return this.authService.loginUser(form.controls.email.value, form.controls.password.value)
-    //     .subscribe( data => {
-
-    //       if ( data.error != null ) {
-    //         this.authService.session_failed( form.controls.email.value, form.controls.password.value )
-    //           .subscribe( resp => console.log(resp), err => console.log(err));
-    //         swal('Login', data.error, 'error');
-    //       }
-    //       if ( data.user != null ) {
-
-    //         if ( data.user.state === 'register' ) {
-    //           swal('Login', 'El Administrador, tiene que activar su cuenta', 'warning');
-    //           return;
-    //         }
-
-    //         if ( data.user.state === 'disable' ) {
-    //           swal('Login', 'Usuario  dado de baja', 'error');
-    //           return;
-    //         }
-
-    //         this.authService.setUser(data.user);
-    //         console.log('state: ', data.user.state);
-    //         this.authService.setToken(data.user.token);
-    //         this.authService.session_entry(data.user._id, data.user.email, data.user.token)
-    //           .subscribe( resp => console.log(resp), err => console.log(err));
-    //         this.router.navigate(['/user/profile']);
-    //         setTimeout(() => {
-    //           location.reload();
-    //         }, 500);
-    //       }
-    //     });
-    // }
   }
-
 }

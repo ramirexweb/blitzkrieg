@@ -15,6 +15,7 @@ import { RegisterComponent } from './pages/user/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { Page404Component } from './pages/page404/page404.component';
 import { UserService } from './services/user/user.service';
+import { HeaderComponent } from './dashboard/header/header.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UserService } from './services/user/user.service';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    Page404Component
+    Page404Component,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

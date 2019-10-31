@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userService.users.subscribe( usuarios => {
+    this.userService.getUsers().subscribe( usuarios => {
       this.users = usuarios;
     }, err => {
       console.log('error:', err);
