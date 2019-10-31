@@ -16,6 +16,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { Page404Component } from './pages/page404/page404.component';
 import { UserService } from './services/user/user.service';
 import { HeaderComponent } from './dashboard/header/header.component';
+import { VendedorComponent } from './pages/vendedor/vendedor.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HeaderComponent } from './dashboard/header/header.component';
     RegisterComponent,
     HomeComponent,
     Page404Component,
-    HeaderComponent
+    HeaderComponent,
+    VendedorComponent
   ],
   imports: [
     BrowserModule,

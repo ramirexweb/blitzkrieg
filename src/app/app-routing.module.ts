@@ -5,6 +5,7 @@ import { Page404Component } from './pages/page404/page404.component';
 import { LoginComponent } from './pages/user/login/login.component';
 import { RegisterComponent } from './pages/user/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
+import { VendedorComponent } from './pages/vendedor/vendedor.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'user/register',
     component: RegisterComponent
+  },
+  {
+    path: 'vendedor',
+    component: VendedorComponent
   },
   {
     path: '**',

@@ -54,7 +54,14 @@ export class LoginComponent implements OnInit {
       } else {
         if ( usuarios[0].password === form.controls.password.value ) {
           this.authService.setUser(usuarios[0]);
-          this.router.navigate(['/']);
+          switch (usuarios[0].tipo) {
+            case 'vendedor': {
+              this.router.navigate(['/vendedor']);
+              break;
+            } default: {
+              this.router.navigate(['/']);
+            }
+          }
         } else {
           swal.fire('Password Incorrecto', 'la contraseña no corresponde al usuario', 'error');
         }
