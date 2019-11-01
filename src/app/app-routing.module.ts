@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/user/login/login.component';
 import { RegisterComponent } from './pages/user/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
 import { VendedorComponent } from './pages/vendedor/vendedor.component';
+import { VendedorProductosComponent } from './pages/vendedor/vendedor-productos/vendedor-productos.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,13 @@ const routes: Routes = [
   },
   {
     path: 'vendedor',
-    component: VendedorComponent
+    component: VendedorComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'vendedorProductos/:id',
+    component: VendedorProductosComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

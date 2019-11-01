@@ -17,6 +17,9 @@ import { Page404Component } from './pages/page404/page404.component';
 import { UserService } from './services/user/user.service';
 import { HeaderComponent } from './dashboard/header/header.component';
 import { VendedorComponent } from './pages/vendedor/vendedor.component';
+import { VendedorProductosComponent } from './pages/vendedor/vendedor-productos/vendedor-productos.component';
+// tslint:disable-next-line:max-line-length
+import { VendedorProductosItemComponent } from './pages/vendedor/vendedor-productos/vendedor-productos-item/vendedor-productos-item.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { VendedorComponent } from './pages/vendedor/vendedor.component';
     HomeComponent,
     Page404Component,
     HeaderComponent,
-    VendedorComponent
+    VendedorComponent,
+    VendedorProductosComponent,
+    VendedorProductosItemComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +46,9 @@ import { VendedorComponent } from './pages/vendedor/vendedor.component';
   providers: [
     UserService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    VendedorProductosItemComponent
+  ]
 })
 export class AppModule { }
