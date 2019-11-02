@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { VendedorProductosItemComponent } from './vendedor-productos-item/vendedor-productos-item.component';
 import { ActivatedRoute } from '@angular/router';
+import { Producto } from 'src/app/models/producto';
+import { ProductoService } from 'src/app/services/tienda/producto.service';
 
 @Component({
   selector: 'app-vendedor-productos',
@@ -10,12 +12,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class VendedorProductosComponent implements OnInit {
 
+  public productos: Producto[];
+
   constructor(
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private productoService: ProductoService
   ) { }
 
   ngOnInit() {
+
+    this.productoService.getProductos()
+      .subscribe( (data: Producto[]) => {
+        this.productos = data;
+      }, err => console.log(err));
   }
 
   public addProduct() {
@@ -25,7 +35,8 @@ export class VendedorProductosComponent implements OnInit {
       autoFocus: true,
       width: '80%',
       data: {
-        id: this.route.snapshot.params.id
+        id: this.route.snapshot.params.id,
+        productos: this.productos
       }
     });
 
