@@ -22,21 +22,41 @@ export class VendedorProductosComponent implements OnInit {
 
   ngOnInit() {
 
-    this.productoService.getProductos()
+    this.productoService.getProductosVendedor(this.route.snapshot.params.id)
       .subscribe( (data: Producto[]) => {
         this.productos = data;
       }, err => console.log(err));
   }
 
   public addProduct() {
-    console.log('addProducto');
     const dialogRef = this.dialog.open(VendedorProductosItemComponent, {
       disableClose: false,
       autoFocus: true,
       width: '80%',
       data: {
         id: this.route.snapshot.params.id,
-        productos: this.productos
+        productos: this.productos,
+        producto: [] as Producto
+      }
+    });
+
+    dialogRef.afterClosed()
+      .subscribe((data: any) => {
+        console.log(data);
+      }, err => console.log(err));
+  }
+
+  public editProduct(producto: Producto) {
+    console.log('edit', producto);
+
+    const dialogRef = this.dialog.open(VendedorProductosItemComponent, {
+      disableClose: false,
+      autoFocus: true,
+      width: '80%',
+      data: {
+        id: this.route.snapshot.params.id,
+        productos: this.productos,
+        producto
       }
     });
 

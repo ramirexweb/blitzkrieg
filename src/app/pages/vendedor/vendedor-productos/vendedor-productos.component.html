@@ -17,14 +17,12 @@
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #menuUser="matMenu">
-                <button mat-menu-item routerLink="/admin/admin-user/{{producto.id}}">
+                <button mat-menu-item (click)="editProduct(producto)">
                   <mat-icon>edit</mat-icon>
                   <span>Editar Producto</span>
                 </button>
               </mat-menu>
-
         </mat-card-title>
-        <!-- <span class="toolbar-spacer"></span> -->
 
 
       </mat-card-header>

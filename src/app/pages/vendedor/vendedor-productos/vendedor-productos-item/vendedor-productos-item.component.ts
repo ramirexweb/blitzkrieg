@@ -15,6 +15,7 @@ import { ProductoService } from 'src/app/services/tienda/producto.service';
 export class VendedorProductosItemComponent implements OnInit {
 
   public formulario: FormGroup;
+  public titleProducto: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,11 +29,17 @@ export class VendedorProductosItemComponent implements OnInit {
     console.log('dataImport: ', this.dataImport);
 
     this.formulario = this.formBuilder.group({
-      producto: ['', Validators.required],
-      detalle: ['', Validators.required],
-      cantidad: ['', Validators.required],
-      precio: ['', Validators.required]
+      producto: [this.dataImport.producto.producto, Validators.required],
+      detalle: [this.dataImport.producto.detalle, Validators.required],
+      cantidad: [this.dataImport.producto.cantidad, Validators.required],
+      precio: [this.dataImport.producto.precio, Validators.required]
     });
+
+    if ( !this.dataImport.producto.id ) {
+      this.titleProducto = 'Nuevo Producto';
+    } else {
+      this.titleProducto = 'Editar Producto';
+    }
   }
 
   public cerrarProducto() {
@@ -44,21 +51,44 @@ export class VendedorProductosItemComponent implements OnInit {
     if ( !form.valid ) {
       swal.fire('Producto', 'Error al registrar el Producto', 'error');
     } else {
-      console.log('podemos llegar hasta aqui...');
 
-      const newProducto: Producto = {
-        producto: form.controls.producto.value,
-        detalle: form.controls.detalle.value,
-        imagen: '',
-        cantidad: form.controls.cantidad.value,
-        stock: form.controls.cantidad.value,
-        precio: form.controls.precio.value,
-        estado: 'activo',
-        idUsusario: this.dataImport.id
-      };
+      if ( !this.dataImport.producto.id ) {
+        if ( this.dataImport.productos.filter( (producto: Producto) => producto.producto === form.controls.producto.value ).length !== 0 ) {
+          swal.fire('Producto', 'Existe el producto repetido', 'error');
+        } else {
+          const newProducto: Producto = {
+            producto: form.controls.producto.value,
+            detalle: form.controls.detalle.value,
+            imagen: '',
+            cantidad: form.controls.cantidad.value,
+            stock: form.controls.cantidad.value,
+            precio: form.controls.precio.value,
+            estado: 'activo',
+            idUsuario: this.dataImport.id
+          };
 
-      this.productoService.addProducto(newProducto);
-      this.dialogRef.close();
+          this.productoService.addProducto(newProducto);
+          this.dialogRef.close();
+        }
+      } else {
+        if ( this.dataImport.productos.filter(
+          (producto: Producto) => producto.id !== this.dataImport.producto.id && producto.idUsuario === this.dataImport.id).length !== 0 ) {
+          swal.fire('Producto', 'Existe el producto repetido', 'error');
+        } else {
+          const editProducto: Producto = {
+            producto: form.controls.producto.value,
+            detalle: form.controls.detalle.value,
+            cantidad: form.controls.cantidad.value,
+            stock: form.controls.cantidad.value,
+            precio: form.controls.precio.value,
+            estado: 'activo',
+            idUsuario: this.dataImport.id
+          };
+
+          this.productoService.updateProducto( this.dataImport.producto.id,  editProducto);
+          this.dialogRef.close();
+        }
+      }
     }
   }
 }

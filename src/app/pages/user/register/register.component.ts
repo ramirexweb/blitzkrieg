@@ -64,7 +64,8 @@ export class RegisterComponent implements OnInit {
         telefono: form.controls.telefono.value,
         direccion: form.controls.direccion.value,
         password: form.controls.password.value,
-        tipo: form.controls.tipo.value
+        tipo: form.controls.tipo.value,
+        estado: 'activo'
       };
 
       if ( this.users !== undefined) {

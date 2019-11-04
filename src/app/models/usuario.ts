@@ -7,4 +7,5 @@ export interface Usuario {
   direccion?: string;
   password?: string;
   tipo?: string;
+  estado?: string;
 }

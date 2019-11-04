@@ -7,5 +7,5 @@ export interface Producto {
   stock?: number;
   precio?: number;
   estado?: string;
-  idUsusario?: string;
+  idUsuario?: string;
 }
