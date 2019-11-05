@@ -12,3 +12,14 @@
   justify-content: space-between;
   align-items: center;
 }
+
+
+.producto-imagen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.producto-imagen img {
+  width: 100px;
+}

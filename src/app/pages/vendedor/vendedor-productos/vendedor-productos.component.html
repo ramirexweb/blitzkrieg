@@ -23,9 +23,10 @@
                 </button>
               </mat-menu>
         </mat-card-title>
-
-
       </mat-card-header>
+      <div class="producto-imagen" *ngIf="producto.imagen !== ' '">
+        <img mat-card-image src="{{producto.imagen}}" alt="producto">
+      </div>
       <mat-card-content>
         <p>
           {{producto.detalle}}
@@ -33,6 +34,9 @@
         <p>Precio: {{producto.precio}}</p>
         <p>Cantidad: {{producto.cantidad}}</p>
         <p>Stock: {{producto.stock}}</p>
+
+        <input type="file" (change)="upload(producto, $event)" accept=".png,.jpg" />
+
       </mat-card-content>
     </mat-card>
   </div>

@@ -47,7 +47,6 @@ export class VendedorProductosComponent implements OnInit {
   }
 
   public editProduct(producto: Producto) {
-    console.log('edit', producto);
 
     const dialogRef = this.dialog.open(VendedorProductosItemComponent, {
       disableClose: false,
@@ -66,4 +65,19 @@ export class VendedorProductosComponent implements OnInit {
       }, err => console.log(err));
   }
 
+
+  public upload(producto: Producto, event: any) {
+
+    const randomId = Math.random().toString(36).substring(2);
+
+    this.productoService.updateProductoImagen(event).then(data => {
+      this.productoService.readProductoImagen(data.metadata.fullPath).subscribe(info => {
+        const editProducto: Producto = {
+          imagen: info
+        };
+
+        this.productoService.updateProducto(producto.id, editProducto);
+      });
+    }, err => console.log(err));
+  }
 }
