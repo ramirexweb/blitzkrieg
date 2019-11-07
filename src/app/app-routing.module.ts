@@ -12,6 +12,8 @@ import { AdminClientesComponent } from './pages/admin/admin-clientes/admin-clien
 import { AdminVendedoresComponent } from './pages/admin/admin-vendedores/admin-vendedores.component';
 import { ClienteComponent } from './pages/cliente/cliente.component';
 import { ClienteVerProductosComponent } from './pages/cliente/cliente-ver-productos/cliente-ver-productos.component';
+// tslint:disable-next-line:max-line-length
+import { ClienteProductoDetalleComponent } from './pages/cliente/cliente-ver-productos/cliente-producto-detalle/cliente-producto-detalle.component';
 
 
 const routes: Routes = [
@@ -51,6 +53,11 @@ const routes: Routes = [
   {
     path: 'cliente/verProducto/:id',
     component: ClienteVerProductosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'cliente/detalleProducto/:id/:idProducto',
+    component: ClienteProductoDetalleComponent,
     canActivate: [AuthGuard]
   },
   {

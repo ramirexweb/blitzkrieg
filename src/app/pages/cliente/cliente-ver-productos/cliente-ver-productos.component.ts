@@ -30,4 +30,8 @@ export class ClienteVerProductosComponent implements OnInit {
     this.router.navigate(['/cliente']);
   }
 
+  public viewProductos(producto: Producto) {
+    this.router.navigate(['/cliente/detalleProducto/', this.route.snapshot.params.id, producto.id]);
+  }
+
 }

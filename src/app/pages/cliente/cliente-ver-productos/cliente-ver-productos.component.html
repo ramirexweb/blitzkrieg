@@ -25,7 +25,7 @@
           <p>Stock: {{producto.stock}}</p>
         </mat-card-content>
         <mat-card-footer class="producto-footer">
-          <button mat-raised-button color="primary">
+          <button mat-raised-button color="primary" (click)="viewProductos(producto)">
             Ver
           </button>
         </mat-card-footer>

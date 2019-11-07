@@ -20,6 +20,11 @@ export class ProductoService {
     private afStorage: AngularFireStorage
   ) { }
 
+  public getProducto(id: string ) {
+
+    return this.db.doc(`productos/${id}`).valueChanges();
+  }
+
   public getProductos() {
 
     this.productoCollection = this.db.collection('productos');

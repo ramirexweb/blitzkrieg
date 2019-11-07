@@ -26,6 +26,8 @@ import { AdminVendedoresComponent } from './pages/admin/admin-vendedores/admin-v
 import { AdminClientesComponent } from './pages/admin/admin-clientes/admin-clientes.component';
 import { ClienteComponent } from './pages/cliente/cliente.component';
 import { ClienteVerProductosComponent } from './pages/cliente/cliente-ver-productos/cliente-ver-productos.component';
+// tslint:disable-next-line:max-line-length
+import { ClienteProductoDetalleComponent } from './pages/cliente/cliente-ver-productos/cliente-producto-detalle/cliente-producto-detalle.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { ClienteVerProductosComponent } from './pages/cliente/cliente-ver-produc
     AdminVendedoresComponent,
     AdminClientesComponent,
     ClienteComponent,
-    ClienteVerProductosComponent
+    ClienteVerProductosComponent,
+    ClienteProductoDetalleComponent
   ],
   imports: [
     BrowserModule,
