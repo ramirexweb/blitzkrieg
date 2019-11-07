@@ -24,6 +24,8 @@ import { VendedorProductosItemComponent } from './pages/vendedor/vendedor-produc
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminVendedoresComponent } from './pages/admin/admin-vendedores/admin-vendedores.component';
 import { AdminClientesComponent } from './pages/admin/admin-clientes/admin-clientes.component';
+import { ClienteComponent } from './pages/cliente/cliente.component';
+import { ClienteVerProductosComponent } from './pages/cliente/cliente-ver-productos/cliente-ver-productos.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { AdminClientesComponent } from './pages/admin/admin-clientes/admin-clien
     VendedorProductosItemComponent,
     AdminComponent,
     AdminVendedoresComponent,
-    AdminClientesComponent
+    AdminClientesComponent,
+    ClienteComponent,
+    ClienteVerProductosComponent
   ],
   imports: [
     BrowserModule,

@@ -46,6 +46,20 @@ export class ProductoService {
     }));
   }
 
+  public getProductosStock() {
+
+    this.productoCollection = this.db.collection('productos', ref => ref.where('stock', '>', 0)
+    );
+
+    return this.productoCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map( a => {
+        const data = a.payload.doc.data() as Producto;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+  }
+
   public addProducto(producto: Producto) {
     this.productoCollection.add(producto);
   }

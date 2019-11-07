@@ -10,6 +10,8 @@ import { VendedorProductosComponent } from './pages/vendedor/vendedor-productos/
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminClientesComponent } from './pages/admin/admin-clientes/admin-clientes.component';
 import { AdminVendedoresComponent } from './pages/admin/admin-vendedores/admin-vendedores.component';
+import { ClienteComponent } from './pages/cliente/cliente.component';
+import { ClienteVerProductosComponent } from './pages/cliente/cliente-ver-productos/cliente-ver-productos.component';
 
 
 const routes: Routes = [
@@ -39,6 +41,16 @@ const routes: Routes = [
   {
     path: 'admin/vendedores',
     component: AdminVendedoresComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'cliente',
+    component: ClienteComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'cliente/verProducto/:id',
+    component: ClienteVerProductosComponent,
     canActivate: [AuthGuard]
   },
   {
