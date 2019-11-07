@@ -25,6 +25,10 @@ export class AuthService {
     }
   }
 
+  getCurrentUserSubscribe() {
+    return localStorage.getItem('currentUser');
+  }
+
   logoutUser() {
     localStorage.removeItem('currentUser');
     this.router.navigate(['/user/login']);

@@ -7,6 +7,7 @@ import { RegisterComponent } from './pages/user/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
 import { VendedorComponent } from './pages/vendedor/vendedor.component';
 import { VendedorProductosComponent } from './pages/vendedor/vendedor-productos/vendedor-productos.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,11 @@ const routes: Routes = [
   {
     path: 'user/register',
     component: RegisterComponent
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'vendedor',

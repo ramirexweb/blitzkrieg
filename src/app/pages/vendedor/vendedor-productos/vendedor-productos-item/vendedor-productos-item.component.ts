@@ -71,8 +71,10 @@ export class VendedorProductosItemComponent implements OnInit {
           this.dialogRef.close();
         }
       } else {
+
         if ( this.dataImport.productos.filter(
-          (producto: Producto) => producto.id !== this.dataImport.producto.id && producto.idUsuario === this.dataImport.id).length !== 0 ) {
+          (producto: Producto) =>
+            producto.id !== this.dataImport.producto.id && producto.producto === form.controls.producto.value).length !== 0 ) {
           swal.fire('Producto', 'Existe el producto repetido', 'error');
         } else {
           const editProducto: Producto = {

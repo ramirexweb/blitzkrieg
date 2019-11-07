@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/user/auth.service';
 import { Router } from '@angular/router';
@@ -58,7 +58,12 @@ export class LoginComponent implements OnInit {
             case 'vendedor': {
               this.router.navigate(['/vendedor']);
               break;
-            } default: {
+            }
+            case 'administrador': {
+              this.router.navigate(['/admin']);
+              break;
+            }
+            default: {
               this.router.navigate(['/']);
             }
           }
