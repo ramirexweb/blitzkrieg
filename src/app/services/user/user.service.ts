@@ -30,6 +30,19 @@ export class UserService {
     }));
   }
 
+  public getUsersTipo(tipo: string) {
+    this.usersCollection = this.db.collection('users', ref => ref.where('tipo', '==', tipo)
+    );
+
+    return this.usersCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map( a => {
+        const data = a.payload.doc.data() as Usuario;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+  }
+
   public getUser(id: string ) {
 
     return this.db.doc(`users/${id}`).valueChanges();
@@ -37,6 +50,11 @@ export class UserService {
 
   public addUser(user: Usuario) {
     this.usersCollection.add(user);
+  }
+
+  public updateUser(idUser: string, usuario: Usuario) {
+    this.userDoc = this.db.doc(`users/${idUser}`);
+    this.userDoc.update(usuario);
   }
 
   public deleteUser(user: Usuario) {

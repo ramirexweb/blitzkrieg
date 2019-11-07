@@ -9,6 +9,15 @@
       Nuevo Producto
     </button>
   </mat-toolbar>
+</div>
+<div class="back-button">
+  <button mat-stroked-button color="primary" (click)="back()">
+    <mat-icon>
+      arrow_back_ios
+    </mat-icon> Vendedor
+  </button>
+</div>
+<div class="contenedor">
   <div>
     <mat-card *ngFor="let producto of productos">
       <mat-card-header>

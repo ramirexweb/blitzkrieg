@@ -52,23 +52,27 @@ export class LoginComponent implements OnInit {
       if ( usuarios.length === 0) {
         swal.fire('Email invalido', 'no existe el Usuario', 'error');
       } else {
-        if ( usuarios[0].password === form.controls.password.value ) {
-          this.authService.setUser(usuarios[0]);
-          switch (usuarios[0].tipo) {
-            case 'vendedor': {
-              this.router.navigate(['/vendedor']);
-              break;
-            }
-            case 'administrador': {
-              this.router.navigate(['/admin']);
-              break;
-            }
-            default: {
-              this.router.navigate(['/']);
-            }
-          }
+        if ( usuarios[0].estado === 'baja') {
+          swal.fire('Usuario dado de baja', 'El administrador dio de baja al usuario', 'error');
         } else {
-          swal.fire('Password Incorrecto', 'la contraseña no corresponde al usuario', 'error');
+          if ( usuarios[0].password === form.controls.password.value ) {
+            this.authService.setUser(usuarios[0]);
+            switch (usuarios[0].tipo) {
+              case 'vendedor': {
+                this.router.navigate(['/vendedor']);
+                break;
+              }
+              case 'administrador': {
+                this.router.navigate(['/admin']);
+                break;
+              }
+              default: {
+                this.router.navigate(['/']);
+              }
+            }
+          } else {
+            swal.fire('Password Incorrecto', 'la contraseña no corresponde al usuario', 'error');
+          }
         }
       }
     }

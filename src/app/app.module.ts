@@ -22,6 +22,8 @@ import { VendedorProductosComponent } from './pages/vendedor/vendedor-productos/
 // tslint:disable-next-line:max-line-length
 import { VendedorProductosItemComponent } from './pages/vendedor/vendedor-productos/vendedor-productos-item/vendedor-productos-item.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { AdminVendedoresComponent } from './pages/admin/admin-vendedores/admin-vendedores.component';
+import { AdminClientesComponent } from './pages/admin/admin-clientes/admin-clientes.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { AdminComponent } from './pages/admin/admin.component';
     VendedorComponent,
     VendedorProductosComponent,
     VendedorProductosItemComponent,
-    AdminComponent
+    AdminComponent,
+    AdminVendedoresComponent,
+    AdminClientesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { VendedorProductosItemComponent } from './vendedor-productos-item/vendedor-productos-item.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from 'src/app/models/producto';
 import { ProductoService } from 'src/app/services/tienda/producto.service';
 
@@ -16,6 +16,7 @@ export class VendedorProductosComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private dialog: MatDialog,
     private productoService: ProductoService
   ) { }
@@ -26,6 +27,10 @@ export class VendedorProductosComponent implements OnInit {
       .subscribe( (data: Producto[]) => {
         this.productos = data;
       }, err => console.log(err));
+  }
+
+  public back() {
+    this.router.navigate(['/vendedor']);
   }
 
   public addProduct() {

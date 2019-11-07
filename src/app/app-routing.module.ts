@@ -8,6 +8,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { VendedorComponent } from './pages/vendedor/vendedor.component';
 import { VendedorProductosComponent } from './pages/vendedor/vendedor-productos/vendedor-productos.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { AdminClientesComponent } from './pages/admin/admin-clientes/admin-clientes.component';
+import { AdminVendedoresComponent } from './pages/admin/admin-vendedores/admin-vendedores.component';
 
 
 const routes: Routes = [
@@ -27,6 +29,16 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin/clientes',
+    component: AdminClientesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin/vendedores',
+    component: AdminVendedoresComponent,
     canActivate: [AuthGuard]
   },
   {
