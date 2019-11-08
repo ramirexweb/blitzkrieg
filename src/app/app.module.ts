@@ -28,6 +28,8 @@ import { ClienteComponent } from './pages/cliente/cliente.component';
 import { ClienteVerProductosComponent } from './pages/cliente/cliente-ver-productos/cliente-ver-productos.component';
 // tslint:disable-next-line:max-line-length
 import { ClienteProductoDetalleComponent } from './pages/cliente/cliente-ver-productos/cliente-producto-detalle/cliente-producto-detalle.component';
+import { ClienteProductoPedidosComponent } from './pages/cliente/cliente-producto-pedidos/cliente-producto-pedidos.component';
+import { VendedorPedidosComponent } from './pages/vendedor/vendedor-pedidos/vendedor-pedidos.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { ClienteProductoDetalleComponent } from './pages/cliente/cliente-ver-pro
     AdminClientesComponent,
     ClienteComponent,
     ClienteVerProductosComponent,
-    ClienteProductoDetalleComponent
+    ClienteProductoDetalleComponent,
+    ClienteProductoPedidosComponent,
+    VendedorPedidosComponent
   ],
   imports: [
     BrowserModule,

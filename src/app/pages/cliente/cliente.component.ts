@@ -21,4 +21,8 @@ export class ClienteComponent implements OnInit {
     this.router.navigate(['/cliente/verProducto/', this.authService.getCurrentUser().id]);
   }
 
+  public viewPedido() {
+    this.router.navigate(['/cliente/pedidos/', this.authService.getCurrentUser().id]);
+  }
+
 }

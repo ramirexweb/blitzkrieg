@@ -21,4 +21,8 @@ export class VendedorComponent implements OnInit {
     this.router.navigate(['/vendedorProductos/', this.authService.getCurrentUser().id]);
   }
 
+  public viewPedidos() {
+    this.router.navigate(['/vendedorPedidos/', this.authService.getCurrentUser().id]);
+  }
+
 }

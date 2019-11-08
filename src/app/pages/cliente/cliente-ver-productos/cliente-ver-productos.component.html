@@ -7,28 +7,28 @@
   </button>
 </div>
 <div class="contenedor">
-    <div>
-      <mat-card class="producto-card mat-elevation-z8" *ngFor="let producto of productos">
-        <mat-card-header>
-          <mat-card-title class="producto-titulo">
-            {{producto.producto}}
-          </mat-card-title>
-        </mat-card-header>
-        <div class="producto-imagen" *ngIf="producto.imagen !== ' '">
-          <img mat-card-image src="{{producto.imagen}}" alt="producto">
-        </div>
-        <mat-card-content>
-          <p>
-            {{producto.detalle}}
-          </p>
-          <p>Precio: {{producto.precio}}</p>
-          <p>Stock: {{producto.stock}}</p>
-        </mat-card-content>
-        <mat-card-footer class="producto-footer">
-          <button mat-raised-button color="primary" (click)="viewProductos(producto)">
-            Ver
-          </button>
-        </mat-card-footer>
-      </mat-card>
-    </div>
+  <div>
+    <mat-card class="producto-card mat-elevation-z8" *ngFor="let producto of productos">
+      <mat-card-header>
+        <mat-card-title class="producto-titulo">
+          {{producto.producto}}
+        </mat-card-title>
+      </mat-card-header>
+      <div class="producto-imagen" *ngIf="producto.imagen !== ' '">
+        <img mat-card-image src="{{producto.imagen}}" alt="producto">
+      </div>
+      <mat-card-content>
+        <p>
+          {{producto.detalle}}
+        </p>
+        <p>Precio: {{producto.precio}}</p>
+        <p>Stock: {{producto.stock}}</p>
+      </mat-card-content>
+      <mat-card-footer class="producto-footer">
+        <button mat-raised-button color="primary" (click)="viewProductos(producto)">
+          Ver
+        </button>
+      </mat-card-footer>
+    </mat-card>
   </div>
+</div>

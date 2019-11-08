@@ -14,6 +14,8 @@ import { ClienteComponent } from './pages/cliente/cliente.component';
 import { ClienteVerProductosComponent } from './pages/cliente/cliente-ver-productos/cliente-ver-productos.component';
 // tslint:disable-next-line:max-line-length
 import { ClienteProductoDetalleComponent } from './pages/cliente/cliente-ver-productos/cliente-producto-detalle/cliente-producto-detalle.component';
+import { ClienteProductoPedidosComponent } from './pages/cliente/cliente-producto-pedidos/cliente-producto-pedidos.component';
+import { VendedorPedidosComponent } from './pages/vendedor/vendedor-pedidos/vendedor-pedidos.component';
 
 
 const routes: Routes = [
@@ -61,6 +63,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'cliente/pedidos/:id',
+    component: ClienteProductoPedidosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'vendedor',
     component: VendedorComponent,
     canActivate: [AuthGuard]
@@ -68,6 +75,11 @@ const routes: Routes = [
   {
     path: 'vendedorProductos/:id',
     component: VendedorProductosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'vendedorPedidos/:id',
+    component: VendedorPedidosComponent,
     canActivate: [AuthGuard]
   },
   {
